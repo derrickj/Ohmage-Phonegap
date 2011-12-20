@@ -33,6 +33,7 @@
 		49BDC1F314A0361D00BC7004 /* Capture.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49BDC1F214A0361D00BC7004 /* Capture.bundle */; };
 		49BDC1F514A0361D00BC7004 /* PhoneGap.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49BDC1F414A0361D00BC7004 /* PhoneGap.plist */; };
 		49BDC1F914A0361D00BC7004 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 49BDC1F814A0361D00BC7004 /* AppDelegate.m */; };
+		49BDC20214A0386C00BC7004 /* www in Resources */ = {isa = PBXBuildFile; fileRef = 49BDC20114A0386B00BC7004 /* www */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,10 +51,10 @@
 		49BDC1CC14A0361D00BC7004 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		49BDC1CE14A0361D00BC7004 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		49BDC1D014A0361D00BC7004 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
-		49BDC1D414A0361D00BC7004 /* Ohmage-Info.plist */ = {isa = PBXFileReference; path = "Ohmage-Info.plist"; sourceTree = "<group>"; };
+		49BDC1D414A0361D00BC7004 /* Ohmage-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ohmage-Info.plist"; sourceTree = "<group>"; };
 		49BDC1D614A0361D00BC7004 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		49BDC1D814A0361D00BC7004 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		49BDC1DA14A0361D00BC7004 /* Ohmage-Prefix.pch */ = {isa = PBXFileReference; path = "Ohmage-Prefix.pch"; sourceTree = "<group>"; };
+		49BDC1DA14A0361D00BC7004 /* Ohmage-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ohmage-Prefix.pch"; sourceTree = "<group>"; };
 		49BDC1DB14A0361D00BC7004 /* PhoneGap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhoneGap.framework; path = /Users/Shared/PhoneGap/Frameworks/PhoneGap.framework; sourceTree = "<absolute>"; };
 		49BDC1E014A0361D00BC7004 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Resources/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		49BDC1E414A0361D00BC7004 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Resources/es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -64,9 +65,10 @@
 		49BDC1F014A0361D00BC7004 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/splash/Default@2x.png"; sourceTree = "<group>"; };
 		49BDC1F214A0361D00BC7004 /* Capture.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Capture.bundle; path = Resources/Capture.bundle; sourceTree = "<group>"; };
 		49BDC1F414A0361D00BC7004 /* PhoneGap.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PhoneGap.plist; sourceTree = "<group>"; };
-		49BDC1F714A0361D00BC7004 /* AppDelegate.h */ = {isa = PBXFileReference; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
+		49BDC1F714A0361D00BC7004 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		49BDC1F814A0361D00BC7004 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Classes/AppDelegate.m; sourceTree = "<group>"; };
-		49BDC1FB14A0361D00BC7004 /* README */ = {isa = PBXFileReference; name = README; path = Plugins/README; sourceTree = "<group>"; };
+		49BDC1FB14A0361D00BC7004 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; name = README; path = Plugins/README; sourceTree = "<group>"; };
+		49BDC20114A0386B00BC7004 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 		49BDC1A614A0361D00BC7004 = {
 			isa = PBXGroup;
 			children = (
+				49BDC20114A0386B00BC7004 /* www */,
 				49BDC1D214A0361D00BC7004 /* Ohmage */,
 				49BDC1B714A0361D00BC7004 /* Frameworks */,
 				49BDC1B514A0361D00BC7004 /* Products */,
@@ -290,6 +293,7 @@
 				49BDC1F114A0361D00BC7004 /* Default@2x.png in Resources */,
 				49BDC1F314A0361D00BC7004 /* Capture.bundle in Resources */,
 				49BDC1F514A0361D00BC7004 /* PhoneGap.plist in Resources */,
+				49BDC20214A0386C00BC7004 /* www in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
