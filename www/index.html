@@ -52,13 +52,16 @@
     
     </script>
   </head>
-  <body onload="onBodyLoad()">
-	<h1>Hey, it's PhoneGap!</h1>
-	<p>Don't know how to get started? Check out <em><a target="_blank" href="http://www.phonegap.com/start#ios-x4">PhoneGap Start</a></em>
-	<br />
-	<ol>
-		<li>Check your console log for any white-list rejection errors.</li>
-		<li>Add your allowed <strong>hosts</strong> in PhoneGap.plist/ExternalHosts (wildcards OK, don't enter the URL scheme)</li>
-	</ol>
+    <body onload="onBodyLoad()" id="login-page">
+	<h1>Login</h1>
+    <form>
+        <label>Username:<br>
+            <input name="username" type="text">
+        </label><br>
+        
+        <label>Password:<br>
+            <input name="password" type="password">
+        </label>
+    </form>
   </body>
 </html>
