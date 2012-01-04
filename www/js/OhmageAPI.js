@@ -1,7 +1,7 @@
 function OhmageAPI() {
     this.serverURL = "https://dev.andwellness.org/";
     this.client = "phonegap";
-    this.auth_path = "app/user/auth_token";
+    this.auth_path = "app/user/auth";
 }
 
 /* set's server url
@@ -16,10 +16,11 @@ OhmageAPI.prototype.setServerURL = function(serverURL) {
 }
 
 /*
-requests an auth token (asyncronously)
+requests an authorization (asyncronously), and allows for hashed password
+to be saved for later use
 @param username string
 @param password string
-@param callback function(responseObject)
+@param callback function(responseObject) function to be executed when request is done
  object is in form: obj.result, obj.token
 */
 OhmageAPI.prototype.authenticate = function (username, password, callback) {
@@ -35,7 +36,7 @@ OhmageAPI.prototype.authenticate = function (username, password, callback) {
     req.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var obj = JSON.parse(this.responseText);
-            parentObj.hashedPassword = obj.token;
+            parentObj.hashedPassword = obj.hashed_password;
             callback(JSON.parse(this.responseText));
         }
     }
