@@ -2,6 +2,7 @@ function OhmageAPI() {
     this.serverURL = "https://dev.andwellness.org/";
     this.client = "phonegap";
     this.auth_path = "app/user/auth";
+    this.surveyUploadPath = "app/survey/upload";
 }
 
 /* set's server url
@@ -49,10 +50,24 @@ OhmageAPI.prototype.authenticate = function (username, password, callback) {
 upload survey
 @param campaignUrn string found in xml campaign config
 @param campaignCreationTimestamp string in the form YYYY-MM-DD HH:mm:ss
-@param surveys (an arry of surveys)
+@param surveys an array of survey objects (not json, real objects)
 */
-OhmageAPI.prototype.surveyUpload = function(campaignUrn, campaignCreationTimestamp, surveys) {
-    //TODO
+OhmageAPI.prototype.surveyUpload = function(campaignUrn, campaignCreationTimestamp, surveys, callback) {
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function () {
+        if (this.readyState == 4) {
+            callback(JSON.parse(this.responseText));
+        }
+    }
+
+    var postStr = "user=" + this.username + "&password=" + this.hashedPassword + "&client=" + this.client;
+    postStr += "&campaign_urn=" + campaignUrn + "&campaign_creation_timestamp=" + campaignCreationTimestamp;
+    postStr += "&surveys=" + JSON.stringify(surveys);
+
+
+    req.open("POST", this.serverURL + this.surveyUploadPath);
+    req.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    req.send(postStr);
 }
 
 /* Mobility Upload */
