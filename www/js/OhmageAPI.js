@@ -51,6 +51,7 @@ upload survey
 @param campaignUrn string found in xml campaign config
 @param campaignCreationTimestamp string in the form YYYY-MM-DD HH:mm:ss
 @param surveys an array of survey objects (not json, real objects)
+this is currently targeted at server version 2.8
 */
 OhmageAPI.prototype.surveyUpload = function(campaignUrn, campaignCreationTimestamp, surveys, callback) {
     var req = new XMLHttpRequest();
@@ -74,6 +75,8 @@ OhmageAPI.prototype.surveyUpload = function(campaignUrn, campaignCreationTimesta
     postStr += fieldStr("user", this.username);
     postStr += fieldStr("password", this.hashedPassword);
     postStr += fieldStr("client", this.client);
+    postStr += fieldStr("campaign_urn", campaignUrn);
+    postStr += fieldStr("campaign_creation_timestamp", campaignCreationTimestamp);
     postStr += fieldStr("surveys", JSON.stringify(surveys));
 
     postStr += "--" + boundary + "--\r\n";
