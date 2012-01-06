@@ -56,18 +56,34 @@ OhmageAPI.prototype.surveyUpload = function(campaignUrn, campaignCreationTimesta
     var req = new XMLHttpRequest();
     req.onreadystatechange = function () {
         if (this.readyState == 4) {
+            console.log(JSON.parse(this.responseText));
             callback(JSON.parse(this.responseText));
         }
     }
 
-    var postStr = "user=" + this.username + "&password=" + this.hashedPassword + "&client=" + this.client;
-    postStr += "&campaign_urn=" + campaignUrn + "&campaign_creation_timestamp=" + campaignCreationTimestamp;
-    postStr += "&surveys=" + JSON.stringify(surveys);
-
-
     req.open("POST", this.serverURL + this.surveyUploadPath);
-    req.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    var boundary = "----------------------------897a53c299a7"; //FIXME: better boundary
+    req.setRequestHeader("Content-Type","multipart/form-data; Boundary=" + boundary);
+    var fieldStr = function(name, value) {
+        return "--" + boundary + '\r\n'
+            + 'content-disposition: form-data; name="' + name + '"\r\n\r\n'
+            + value + '\r\n';
+    }
+
+    var postStr = "";
+    postStr += fieldStr("user", this.username);
+    postStr += fieldStr("password", this.hashedPassword);
+    postStr += fieldStr("client", this.client);
+    postStr += fieldStr("surveys", JSON.stringify(surveys));
+
+    postStr += "--" + boundary + "--\r\n";
+
+
+    req.setRequestHeader("charset", "utf-8");
+    req.setRequestHeader("Content-Length", postStr.length);
+
     req.send(postStr);
 }
+
 
 /* Mobility Upload */
