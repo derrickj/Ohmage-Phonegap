@@ -51,9 +51,11 @@ upload survey
 @param campaignUrn string found in xml campaign config
 @param campaignCreationTimestamp string in the form YYYY-MM-DD HH:mm:ss
 @param surveys an array of survey objects (not json, real objects)
+@param images an array of {uuid, data} objects (data is binary image data)
 this is currently targeted at server version 2.9
 */
-OhmageAPI.prototype.surveyUpload = function(campaignUrn, campaignCreationTimestamp, surveys, callback) {
+OhmageAPI.prototype.surveyUpload = function(campaignUrn, campaignCreationTimestamp, surveys, callback,
+    images) {
     var req = new XMLHttpRequest();
     req.onreadystatechange = function () {
         if (this.readyState == 4) {
@@ -71,6 +73,14 @@ OhmageAPI.prototype.surveyUpload = function(campaignUrn, campaignCreationTimesta
             + value + '\r\n';
     }
 
+    var imageStr = function(uuid, data) {
+        return "--" + boundary + '\r\n'
+            + 'content-disposition: attachment; name="' + uuid + '"\r\n'
+            + 'content-type: image/jpeg\r\n'
+            + 'content-transfer-encoding: binary\r\n\r\n'
+            + data + '\r\n';
+    }
+
     var postStr = "";
     postStr += fieldStr("user", this.username);
     postStr += fieldStr("password", this.hashedPassword);
@@ -79,6 +89,11 @@ OhmageAPI.prototype.surveyUpload = function(campaignUrn, campaignCreationTimesta
     postStr += fieldStr("campaign_creation_timestamp", campaignCreationTimestamp);
     postStr += fieldStr("surveys", JSON.stringify(surveys));
 
+    for (var index in images) {
+        var i = images[index];
+        alert("uuid: " + i.uuid + " data: " + i.data);
+        postStr += imageStr(i.uuid, i.data);
+    }
     postStr += "--" + boundary + "--\r\n";
 
 
