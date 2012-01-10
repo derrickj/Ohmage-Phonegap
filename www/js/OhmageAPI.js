@@ -57,8 +57,8 @@ OhmageAPI.prototype.surveyUpload = function(campaignUrn, campaignCreationTimesta
     var req = new XMLHttpRequest();
     req.onreadystatechange = function () {
         if (this.readyState == 4) {
-            console.log(JSON.parse(this.responseText));
-            callback(JSON.parse(this.responseText));
+            var responseObj = JSON.parse(this.responseText);
+            callback(responseObj);
         }
     }
 
