@@ -1,5 +1,5 @@
 function OhmageAPI() {
-    this.serverURL = "https://dev.andwellness.org/";
+    this.serverURL = "https://dev.mobilizingcs.org/";
     this.client = "phonegap";
     this.auth_path = "app/user/auth";
     this.surveyUploadPath = "app/survey/upload";
@@ -51,7 +51,7 @@ upload survey
 @param campaignUrn string found in xml campaign config
 @param campaignCreationTimestamp string in the form YYYY-MM-DD HH:mm:ss
 @param surveys an array of survey objects (not json, real objects)
-this is currently targeted at server version 2.8
+this is currently targeted at server version 2.9
 */
 OhmageAPI.prototype.surveyUpload = function(campaignUrn, campaignCreationTimestamp, surveys, callback) {
     var req = new XMLHttpRequest();
@@ -90,3 +90,17 @@ OhmageAPI.prototype.surveyUpload = function(campaignUrn, campaignCreationTimesta
 
 
 /* Mobility Upload */
+
+
+/* helpers */
+OhmageAPI.prototype.rfc4122uuid = function () {
+    /* code shamelessly copy/pasted from stackoverflow discussion.
+    http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript
+    */
+    var uuid =  'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+        return v.toString(16);
+    });
+
+    return uuid;
+}
